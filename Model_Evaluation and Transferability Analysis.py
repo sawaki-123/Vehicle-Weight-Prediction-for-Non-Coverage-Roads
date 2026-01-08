@@ -81,7 +81,7 @@ results_df = pd.DataFrame(results)
 output_path = "/content/NewYork_XGB_ClassOnly.csv"
 results_df.to_csv(output_path, index=False)
 
-print("✅ Results saved to:", output_path)
+print(" Results saved to:", output_path)
 print(results_df.to_string(index=False))
 
 from google.colab import files
