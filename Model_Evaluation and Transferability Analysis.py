@@ -1996,7 +1996,7 @@ results = [
 
 results_df = pd.DataFrame(results, columns=["Dataset","RMSE (kN)","MAE (kN)","MAPE (%)","R²","Transferability Index"])
 
-print("\n📈 Transferability Results:\n")
+print("\n Transferability Results:\n")
 print(results_df.to_string(index=False))
 
 
@@ -2822,9 +2822,9 @@ m_xgb_ca = calc_metrics(y_ca, y_pred_xgb_ca)
 m_rf_ca  = calc_metrics(y_ca, y_pred_rf_ca)
 
 print("California – XGBoost → RMSE: {:.2f}, MAE: {:.2f}, MAPE: {:.2f}%, R²: {:.3f}"
-      .format(*m_xgb_ca))
+      .format(m_xgb_ca))
 print("California – RandomForest → RMSE: {:.2f}, MAE: {:.2f}, MAPE: {:.2f}%, R²: {:.3f}"
-      .format(*m_rf_ca))
+      .format(m_rf_ca))
 
 
 plt.figure(figsize=(6,6))
