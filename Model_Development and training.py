@@ -310,7 +310,7 @@ from google.colab import files
 import os
 
 
-print("📤 Please select your three files:")
+print("Please select your three files:")
 uploaded = files.upload()
 
 
@@ -527,7 +527,7 @@ results = pd.DataFrame({
     'Value': [round(rmse, 2), round(mae, 2), round(mape, 2), round(r2, 3)]
 })
 
-print("\n📊 Model Performance on California Dataset:\n")
+print("\n Model Performance on California Dataset:\n")
 print(results.to_string(index=False))
 
 
@@ -609,7 +609,7 @@ results = pd.DataFrame({
     'Value': [round(rmse, 2), round(mae, 2), round(mape, 2), round(r2, 3)]
 })
 
-print("\n📊 Model Performance on Texas Dataset:\n")
+print("\n Model Performance on Texas Dataset:\n")
 print(results.to_string(index=False))
 
 
