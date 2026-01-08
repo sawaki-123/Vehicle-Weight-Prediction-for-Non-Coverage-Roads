@@ -161,7 +161,7 @@ lanes = sorted(df["lane"].astype(str).unique())
 
 for lane in lanes:
     print(f"\n==============================")
-    print(f"🔎 Lane: {lane}")
+    print(f" Lane: {lane}")
     print(f"==============================")
 
 
