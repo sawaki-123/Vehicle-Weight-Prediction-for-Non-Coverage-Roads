@@ -159,7 +159,7 @@ results_df = pd.DataFrame(results)
 output_path = "/content/California_XGB_ClassOnly.csv"
 results_df.to_csv(output_path, index=False)
 
-print("✅ Results saved to:", output_path)
+print(" Results saved to:", output_path)
 print(results_df.to_string(index=False))
 
 from google.colab import files
@@ -236,7 +236,7 @@ results_df = pd.DataFrame(results)
 output_path = "/content/NewYork_XGB_Class_NumAxles.csv"
 results_df.to_csv(output_path, index=False)
 
-print("✅ Results saved to:", output_path)
+print(" Results saved to:", output_path)
 print(results_df.to_string(index=False))
 
 from google.colab import files
@@ -290,7 +290,7 @@ results_df = pd.DataFrame(results)
 output_path = "/content/California_XGB_Class_NumAxles.csv"
 results_df.to_csv(output_path, index=False)
 
-print("✅ts saved to:", output_path)
+print("ts saved to:", output_path)
 print(results_df.to_string(index=False))
 
 from google.colab import files
@@ -408,7 +408,7 @@ results_df = pd.DataFrame(results)
 output_path = "/content/Texas_XGB_Class_NumAxles.csv"
 results_df.to_csv(output_path, index=False)
 
-print("✅ Results saved to:", output_path)
+print(" Results saved to:", output_path)
 print(results_df.to_string(index=False))
 
 from google.colab import files
@@ -442,7 +442,7 @@ merged = merged.sort_values(by=["Lane","Class"]).reset_index(drop=True)
 output_path = "/content/XGB_Comparison_AllStates.csv"
 merged.to_csv(output_path, index=False)
 
-print("✅ Combined results saved to:", output_path)
+print("Combined results saved to:", output_path)
 print(merged.to_string(index=False))
 
 from google.colab import files
@@ -490,7 +490,7 @@ ny_model = XGBRegressor(
 )
 ny_model.fit(X_train, y_train)
 
-print("✅ New York model trained with vehicle class only.")
+print(" New York model trained with vehicle class only.")
 
 
 def evaluate_transfer(df, state_name):
@@ -534,7 +534,7 @@ merged = ca_results.merge(tx_results, on=["Lane", "Class"], how="outer")
 output_path = "/content/NY_Model_Transfer_ClassOnly.csv"
 merged.to_csv(output_path, index=False)
 
-print("✅ Transferability results saved to:", output_path)
+print("Transferability results saved to:", output_path)
 print(merged.to_string(index=False))
 
 import pandas as pd
@@ -594,7 +594,7 @@ ny_model = XGBRegressor(
 )
 ny_model.fit(X_train, y_train)
 
-print("✅ New York model trained with balanced sample.")
+print(" New York model trained with balanced sample.")
 
 
 def evaluate_transfer(df, state_name):
@@ -636,7 +636,7 @@ merged = ca_results.merge(tx_results, on=["Lane", "Class"], how="outer")
 output_path = "/content/NY_Model_Transfer_ClassOnly_Balanced.csv"
 merged.to_csv(output_path, index=False)
 
-print("✅ Transferability results saved to:", output_path)
+print(" Transferability results saved to:", output_path)
 print(merged.head(20).to_string(index=False))
 
 import zipfile
@@ -702,7 +702,7 @@ ny_model = XGBRegressor(
 )
 ny_model.fit(X_train, y_train)
 
-print("✅ New York model trained on sampled data (vehicle class only).")
+print(" New York model trained on sampled data (vehicle class only).")
 
 
 def evaluate_transfer(df, state_name):
@@ -748,7 +748,7 @@ merged = ca_results.merge(tx_results, on=["Lane", "Class"], how="outer")
 output_path = "/content/NY_Model_Transfer_ClassOnly_Optimized.csv"
 merged.to_csv(output_path, index=False)
 
-print("✅ Transferability results saved to:", output_path)
+print(" Transferability results saved to:", output_path)
 print(merged.head(20).to_string(index=False))
 
 from google.colab import files
@@ -810,7 +810,7 @@ ny_model = XGBRegressor(
 )
 ny_model.fit(X, y)
 
-print("✅ New York model trained on aggregated lane-class averages.")
+print("New York model trained on aggregated lane-class averages.")
 
 
 def evaluate_transfer_agg(df, state_name):
@@ -845,7 +845,7 @@ merged = ca_results.merge(tx_results, on=["Lane","Class"], how="outer")
 output_path = "/content/NY_Model_Transfer_ClassOnly_Aggregated.csv"
 merged.to_csv(output_path, index=False)
 
-print("✅ Transferability results saved to:", output_path)
+print(" Transferability results saved to:", output_path)
 print(merged.head(20).to_string(index=False))
 
 import pandas as pd
@@ -867,7 +867,7 @@ ny_agg.rename(columns={"gvw":"avg_gvw"}, inplace=True)
 ca_agg = ca.groupby(["lane","class"], as_index=False)["gvw"].mean()
 tx_agg = tx.groupby(["lane","class"], as_index=False)["gvw"].mean()
 
-print("✅ Aggregation complete: NY", ny_agg.shape, "CA", ca_agg.shape, "TX", tx_agg.shape)
+print(" Aggregation complete: NY", ny_agg.shape, "CA", ca_agg.shape, "TX", tx_agg.shape)
 
 
 X = ny_agg[["class"]]
@@ -885,7 +885,7 @@ ny_model = XGBRegressor(
 )
 ny_model.fit(X, y)
 
-print("✅ New York model trained on aggregated lane-class averages.")
+print(" New York model trained on aggregated lane-class averages.")
 
 
 def evaluate_transfer_agg(df, state_name):
@@ -918,7 +918,7 @@ merged = ca_results.merge(tx_results, on=["Lane","Class"], how="outer")
 output_path = "/content/NY_Model_Transfer_ClassOnly_Aggregated.csv"
 merged.to_csv(output_path, index=False)
 
-print("✅ Transferability results saved to:", output_path)
+print(" Transferability results saved to:", output_path)
 print(merged.to_string(index=False))
 
 !ls /content
@@ -971,7 +971,7 @@ for line in lines[1:]:
 
 output_path = "/content/Transferability_Results_Table.docx"
 doc.save(output_path)
-print(f"✅ Formatted Word table saved at: {output_path}")
+print(f" Formatted Word table saved at: {output_path}")
 
 from docx import Document
 from docx.enum.text import WD_ALIGN_PARAGRAPH
@@ -1018,11 +1018,11 @@ for row_data in data_rows:
 
 output_path = "/content/Transferability_Results_Formatted.docx"
 doc.save(output_path)
-print(f"✅ Clean formatted Word table saved at: {output_path}")
+print(f" Clean formatted Word table saved at: {output_path}")
 
 from google.colab import files
 
-print("📁 Please choose your three CSV files:")
+print(" Please choose your three CSV files:")
 uploaded = files.upload()
 
 import zipfile
@@ -1048,10 +1048,10 @@ ca = pd.read_csv("/content/California_Combined_Ordered.csv")
 tx = pd.read_csv("/content/texas_master.csv")
 
 
-print("✅ Files loaded successfully!\n")
-print("🗽 New York shape:", ny.shape)
-print("🌴 California shape:", ca.shape)
-print("🤠 Texas shape:", tx.shape)
+print(" Files loaded successfully!\n")
+print(" New York shape:", ny.shape)
+print(" California shape:", ca.shape)
+print(" Texas shape:", tx.shape)
 
 
 print("\nSample — New York:")
@@ -1066,7 +1066,7 @@ print(tx.head(3))
 import pandas as pd
 
 def quick_preview(path):
-    print(f"\n📂 Previewing: {path}")
+    print(f"\n Previewing: {path}")
     df = pd.read_csv(path, nrows=5)
     print("Columns:", list(df.columns))
     return df
@@ -1176,7 +1176,7 @@ print(df_rounded.head(10))
 
 
 df_rounded.to_csv("/content/Transferability_Rounded.csv", index=False)
-print("\n📄 Rounded table saved to: /content/Transferability_Rounded.csv")
+print("\n Rounded table saved to: /content/Transferability_Rounded.csv")
 
 from google.colab import files
 files.download("/content/Transferability_Rounded.csv")
@@ -1196,7 +1196,7 @@ with zipfile.ZipFile(zip_path, 'r') as zip_ref:
 import os
 
 
-print("📂 Extracted Files:")
+print("Extracted Files:")
 print(os.listdir(extract_to))
 
 import pandas as pd
@@ -1266,9 +1266,9 @@ extract_path = "/content/"
 if os.path.exists(zip_path):
     with zipfile.ZipFile(zip_path, 'r') as zip_ref:
         zip_ref.extractall(extract_path)
-    print("✅ Texas data extracted successfully!")
+    print(" Texas data extracted successfully!")
 else:
-    print("⚠️ texas_master.zip not found in /content/")
+    print(" texas_master.zip not found in /content/")
 
 import os
 print(os.listdir("/content"))
@@ -1328,7 +1328,7 @@ def run_xgb_one_feature(df, state_name):
     output_df = pd.DataFrame(results)
     file_path = f"/content/{state_name}_XGB_Results_OneFeature.csv"
     output_df.to_csv(file_path, index=False)
-    print(f"✅ Saved: {file_path}")
+    print(f" Saved: {file_path}")
     return output_df
 
 
@@ -1397,7 +1397,7 @@ def run_xgb_one_feature(file_path, state_name):
     output_df = pd.DataFrame(results)
     outpath = f"/content/{state_name}_XGB_Results_OneFeature.csv"
     output_df.to_csv(outpath, index=False)
-    print(f"✅ Saved: {outpath}")
+    print(f" Saved: {outpath}")
     return output_df
 
 df_ca = run_xgb_one_feature("/content/California_Combined_Ordered.csv", "California")
@@ -1460,7 +1460,7 @@ def run_xgb_one_feature(file_path, state_name):
     output_df = pd.DataFrame(results)
     outpath = f"/content/{state_name}_XGB_Results_OneFeature.csv"
     output_df.to_csv(outpath, index=False)
-    print(f"✅ Saved: {outpath}")
+    print(f" Saved: {outpath}")
     return output_df
 
 import pandas as pd
@@ -1530,7 +1530,7 @@ def run_xgb_one_feature(df, state_name):
     output_df = pd.DataFrame(results)
     file_path = f"/content/{state_name}_XGB_Results_OneFeature.csv"
     output_df.to_csv(file_path, index=False)
-    print(f"✅ Saved: {file_path}")
+    print(f" Saved: {file_path}")
     return output_df
 
 import pandas as pd
@@ -1582,7 +1582,7 @@ def run_xgb_one_feature(df, state_name):
     output_df = pd.DataFrame(results)
     file_path = f"/content/{state_name}_XGB_Results_OneFeature.csv"
     output_df.to_csv(file_path, index=False)
-    print(f"✅ Saved: {file_path}")
+    print(f" Saved: {file_path}")
     return output_df
 
 
@@ -1604,7 +1604,7 @@ import matplotlib.pyplot as plt
 
 df = pd.read_csv("/content/NewYork_Combined_Ordered.csv")
 
-print("✅ Dataset successfully loaded!")
+print("Dataset successfully loaded!")
 print("Shape:", df.shape)
 print("Columns:", list(df.columns))
 print("\nData types before conversion:\n", df.dtypes)
@@ -1614,7 +1614,7 @@ print("\n")
 for col in df.select_dtypes(include=['object']).columns:
     df[col] = df[col].astype('category').cat.codes
 
-print("✅ All object columns converted to numeric codes.\n")
+print(" All object columns converted to numeric codes.\n")
 
 
 X = df.drop(columns=['gvw'])
@@ -1651,7 +1651,7 @@ results = pd.DataFrame({
     'Value': [round(rmse, 2), round(mae, 2), round(mape, 2), round(r2, 3)]
 })
 
-print("📊 Model Performance on New York Dataset (XGBoost):\n")
+print(" Model Performance on New York Dataset (XGBoost):\n")
 print(results.to_string(index=False))
 
 
@@ -1663,7 +1663,7 @@ plt.show()
 
 
 results.to_csv("/content/NewYork_XGBoost_Results.csv", index=False)
-print("\n✅ Results saved as: NewYork_XGBoost_Results.csv")
+print("\n Results saved as: NewYork_XGBoost_Results.csv")
 
 import zipfile
 import os
@@ -1674,7 +1674,7 @@ zip_path = "/content/California_Combined_Ordered.zip"
 
 with zipfile.ZipFile(zip_path, 'r') as zip_ref:
     zip_ref.extractall("/content/")
-    print("✅ California file extracted!")
+    print(" California file extracted!")
 
 
 print("\nExtracted files:")
@@ -1690,7 +1690,7 @@ zip_path = "/content/texas_master.zip"
 with zipfile.ZipFile(zip_path, 'r') as zip_ref:
     zip_ref.extractall("/content")
 
-print("✅ Texas file extracted successfully!\nExtracted files:")
+print(" Texas file extracted successfully!\nExtracted files:")
 print(os.listdir("/content"))
 
 import pandas as pd
@@ -1702,7 +1702,7 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
 
 df = pd.read_csv("/content/texas_master.csv", nrows=500000, low_memory=False)
-print("✅ Loaded subset:", df.shape)
+print(" Loaded subset:", df.shape)
 print("Columns:", list(df.columns))
 
 
@@ -1750,7 +1750,7 @@ results = pd.DataFrame({
     'Metric': ['RMSE (kN)', 'MAE (kN)', 'MAPE (%)', 'R²'],
     'Value': [round(rmse, 2), round(mae, 2), round(mape, 2), round(r2, 3)]
 })
-print("\n📊 Model Performance (Texas subset):\n")
+print("\n Model Performance (Texas subset):\n")
 print(results.to_string(index=False))
 
 
@@ -1762,7 +1762,7 @@ plt.show()
 
 
 results.to_csv("/content/Texas_XGBoost_Performance_Cleaned.csv", index=False)
-print("\n✅ Results saved as: /content/Texas_XGBoost_Performance_Cleaned.csv")
+print("\n Results saved as: /content/Texas_XGBoost_Performance_Cleaned.csv")
 
 from google.colab import files
 uploaded = files.upload()
@@ -1770,7 +1770,7 @@ uploaded = files.upload()
 import os
 
 
-print("📁 Files currently in /content:")
+print("Files currently in /content:")
 for f in os.listdir("/content"):
     print(f)
 
@@ -1782,7 +1782,7 @@ ca = ca[[c for c in common_features if c in ca.columns]]
 tx = tx[[c for c in common_features if c in tx.columns]]
 
 
-print("\n✅ Final Columns Alignment:")
+print("\n Final Columns Alignment:")
 print("New York:", list(ny.columns))
 print("California:", list(ca.columns))
 print("Texas:", list(tx.columns))
@@ -1809,7 +1809,7 @@ mae_ny = mean_absolute_error(y_test, y_pred_ny)
 mape_ny = np.mean(np.abs((y_test - y_pred_ny) / y_test)) * 100
 r2_ny = r2_score(y_test, y_pred_ny)
 
-print(f"\n📊 New York Base Model (Unified Features):")
+print(f"\n New York Base Model (Unified Features):")
 print(f"RMSE={rmse_ny:.2f}, MAE={mae_ny:.2f}, MAPE={mape_ny:.2f}%, R²={r2_ny:.3f}")
 
 
@@ -1832,13 +1832,13 @@ results = [
 
 results_df = pd.DataFrame(results, columns=["Dataset", "RMSE (kN)", "MAE (kN)", "MAPE (%)", "R²", "Transferability Index"])
 
-print("\n📈 Transferability Results (Unified Features):\n")
+print("\n Transferability Results (Unified Features):\n")
 print(results_df.to_string(index=False))
 
 
 output_path = "/content/Transferability_Aligned_Final.csv"
 results_df.to_csv(output_path, index=False)
-print(f"\n✅ Results saved to: {output_path}")
+print(f"\n Results saved to: {output_path}")
 
 import os
 import pandas as pd
@@ -1854,7 +1854,7 @@ tx_path = "/content/texas_master.csv"
 
 
 def load_and_standardize(path, name, sample_size=None, chunksize=None):
-    print(f"\n📥 Loading {name}...")
+    print(f"\n Loading {name}...")
 
     if chunksize:
         chunks = []
@@ -1887,7 +1887,7 @@ def load_and_standardize(path, name, sample_size=None, chunksize=None):
     available_cols = [c for c in keep_cols if c in df.columns]
     df = df[available_cols]
 
-    print(f"✅ {name} loaded → shape {df.shape}, cols: {list(df.columns)}")
+    print(f" {name} loaded → shape {df.shape}, cols: {list(df.columns)}")
     return df
 
 
@@ -1930,7 +1930,7 @@ def load_and_standardize(path, name):
     available_cols = [c for c in keep_cols if c in df.columns]
     df = df[available_cols]
 
-    print(f"✅ {name} loaded: {df.shape} columns → {df.columns.tolist()}")
+    print(f" {name} loaded: {df.shape} columns → {df.columns.tolist()}")
     return df
 
 
@@ -1972,7 +1972,7 @@ mae_ny  = mean_absolute_error(y_test, y_pred_ny)
 mape_ny = np.mean(np.abs((y_test - y_pred_ny) / y_test)) * 100
 r2_ny   = r2_score(y_test, y_pred_ny)
 
-print(f"\n📊 New York Base Model:")
+print(f"\n New York Base Model:")
 print(f"RMSE={rmse_ny:.2f}, MAE={mae_ny:.2f}, MAPE={mape_ny:.2f}%, R²={r2_ny:.3f}")
 
 
@@ -2002,7 +2002,7 @@ print(results_df.to_string(index=False))
 
 out_path = "/content/Transferability_NY_CA_TX_Flexible.csv"
 results_df.to_csv(out_path, index=False)
-print(f"\n✅ Results saved to: {out_path}")
+print(f"\n Results saved to: {out_path}")
 
 from google.colab import files; uploaded = files.upload()
 
@@ -2019,11 +2019,11 @@ from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 zip_path = "/content/California_Combined_Ordered.zip"
 with zipfile.ZipFile(zip_path, 'r') as zip_ref:
     zip_ref.extractall("/content")
-print("✅ California file extracted successfully!")
+print(" California file extracted successfully!")
 
 
 ca = pd.read_csv("/content/California_Combined_Ordered.csv")
-print("✅ California dataset loaded!")
+print(" California dataset loaded!")
 print("Shape:", ca.shape)
 print("Columns:", list(ca.columns))
 
@@ -2055,7 +2055,7 @@ mape = np.mean(np.abs((y_test - y_pred) / y_test)) * 100
 r2 = r2_score(y_test, y_pred)
 
 
-print("\n📊 Model Performance using only 'class' and 'num_axles' (California):")
+print("\n Model Performance using only 'class' and 'num_axles' (California):")
 print(f"RMSE: {rmse:.3f} kN")
 print(f"MAE: {mae:.3f} kN")
 print(f"MAPE: {mape:.2f}%")
@@ -2090,7 +2090,7 @@ with zipfile.ZipFile(zip_path, 'r') as zip_ref:
 
 
 files = [f for f in os.listdir("/content") if f.endswith('.csv')]
-print("✅ Extraction complete!")
+print(" Extraction complete!")
 print("Extracted files:", files)
 
 import pandas as pd
@@ -2099,7 +2099,7 @@ import pandas as pd
 df = pd.read_csv("/content/texas_master.csv", low_memory=False)
 
 
-print("✅ Texas dataset loaded successfully!")
+print(" Texas dataset loaded successfully!")
 print(f"Shape: {df.shape}")
 print("\nColumns available:")
 print(df.columns.tolist())
@@ -2113,7 +2113,7 @@ import pandas as pd
 
 df = pd.read_csv("/content/texas_master.csv", nrows=5)
 
-print("✅ File loaded (preview only)")
+print(" File loaded (preview only)")
 print("Columns:", df.columns.tolist())
 print("\nSample data:")
 print(df.head())
@@ -2128,7 +2128,7 @@ import numpy as np
 use_cols = ['vehicle class', 'number of axle', 'gvw']
 df = pd.read_csv("/content/texas_master.csv", usecols=use_cols, low_memory=False)
 
-print("✅ Texas dataset loaded successfully!")
+print("Texas dataset loaded successfully!")
 print("Shape:", df.shape)
 print("Columns:", df.columns.tolist())
 
@@ -2140,7 +2140,7 @@ df = df.rename(columns={'vehicle class': 'class', 'number of axle': 'num_axles'}
 
 
 df = df.sample(n=300000, random_state=42)
-print("✅ Sampled:", df.shape)
+print(" Sampled:", df.shape)
 
 
 X = df[['class', 'num_axles']]
@@ -2170,7 +2170,7 @@ mae = mean_absolute_error(y_test, y_pred)
 mape = np.mean(np.abs((y_test - y_pred) / y_test)) * 100
 r2 = r2_score(y_test, y_pred)
 
-print("\n📊 XGBoost Model Performance (Texas Dataset)")
+print("\n XGBoost Model Performance (Texas Dataset)")
 print(f"RMSE: {rmse:.3f} kN")
 print(f"MAE: {mae:.3f} kN")
 print(f"MAPE: {mape:.2f}%")
@@ -2218,7 +2218,7 @@ ca = pd.read_csv("/content/California_Combined_Ordered.csv", usecols=['class','n
 tx = pd.read_csv("/content/texas_master.csv", usecols=['vehicle class','number of axle','gvw'])
 tx.rename(columns={'vehicle class':'class', 'number of axle':'num_axles'}, inplace=True)
 
-print("✅ Datasets loaded successfully:")
+print(" Datasets loaded successfully:")
 print(f"New York: {ny.shape}, California: {ca.shape}, Texas: {tx.shape}")
 
 
@@ -2250,7 +2250,7 @@ mae_ny = mean_absolute_error(y_test, y_pred_ny)
 mape_ny = np.mean(np.abs((y_test - y_pred_ny) / y_test)) * 100
 r2_ny = r2_score(y_test, y_pred_ny)
 
-print(f"\n📊 New York (Base Model):")
+print(f"\n New York (Base Model):")
 print(f"RMSE = {rmse_ny:.2f}, MAE = {mae_ny:.2f}, MAPE = {mape_ny:.2f}%, R² = {r2_ny:.3f}")
 
 
@@ -2263,7 +2263,7 @@ def evaluate_transfer(df, name):
     mape = np.mean(np.abs((y - y_pred) / y)) * 100
     r2 = r2_score(y, y_pred)
     ti = r2 / r2_ny
-    print(f"\n🌍 {name} Transfer Results:")
+    print(f"\n {name} Transfer Results:")
     print(f"RMSE = {rmse:.2f}, MAE = {mae:.2f}, MAPE = {mape:.2f}%, R² = {r2:.3f}, TI = {ti:.3f}")
     return [name, round(rmse,2), round(mae,2), round(mape,2), round(r2,3), round(ti,3)]
 
@@ -2276,12 +2276,12 @@ results = [
 
 
 df_results = pd.DataFrame(results, columns=["Dataset", "RMSE (kN)", "MAE (kN)", "MAPE (%)", "R²", "Transferability Index"])
-print("\n✅ Transferability Results (Class + Num_Axles):")
+print("\n Transferability Results (Class + Num_Axles):")
 print(df_results)
 
 
 df_results.to_csv("/content/Transferability_Class_NumAxles.csv", index=False)
-print("\n💾 Results saved to: /content/Transferability_Class_NumAxles.csv")
+print("\n Results saved to: /content/Transferability_Class_NumAxles.csv")
 
 import pandas as pd
 import numpy as np
@@ -2418,7 +2418,7 @@ mape = np.mean(np.abs((y_test - y_pred) / y_test)) * 100
 r2 = r2_score(y_test, y_pred)
 
 
-print("🌲 Random Forest Model Performance (New York Dataset)")
+print(" Random Forest Model Performance (New York Dataset)")
 print(f"RMSE: {rmse:.3f} kN")
 print(f"MAE: {mae:.3f} kN")
 print(f"MAPE: {mape:.2f}%")
@@ -2461,7 +2461,7 @@ mape = np.mean(np.abs((y_test - y_pred) / y_test)) * 100
 r2 = r2_score(y_test, y_pred)
 
 
-print("🌲 Random Forest Model Performance (California Dataset)")
+print(" Random Forest Model Performance (California Dataset)")
 print(f"RMSE: {rmse:.3f} kN")
 print(f"MAE: {mae:.3f} kN")
 print(f"MAPE: {mape:.2f}%")
@@ -2486,7 +2486,7 @@ for chunk in pd.read_csv("/content/texas_master.csv", usecols=use_cols, chunksiz
 df = pd.concat(data_chunks, ignore_index=True)
 df.rename(columns={'vehicle class':'class', 'number of axle':'num_axles'}, inplace=True)
 
-print(f"✅ Loaded sample from large dataset: {df.shape[0]:,} rows")
+print(f"Loaded sample from large dataset: {df.shape[0]:,} rows")
 print("Columns:", df.columns.tolist())
 print(df.head())
 
@@ -2517,7 +2517,7 @@ mape = np.mean(np.abs((y_test - y_pred) / y_test)) * 100
 r2 = r2_score(y_test, y_pred)
 
 
-print("\n🌲 Random Forest Model Performance (Texas Dataset)")
+print("\n Random Forest Model Performance (Texas Dataset)")
 print(f"RMSE: {rmse:.3f} kN")
 print(f"MAE: {mae:.3f} kN")
 print(f"MAPE: {mape:.2f}%")
@@ -2535,7 +2535,7 @@ ca = pd.read_csv("/content/California_Combined_Ordered.csv", usecols=['class','n
 tx = pd.read_csv("/content/texas_master.csv", usecols=['vehicle class','number of axle','gvw'])
 tx.rename(columns={'vehicle class':'class', 'number of axle':'num_axles'}, inplace=True)
 
-print("✅ Datasets loaded successfully:")
+print(" Datasets loaded successfully:")
 print(f"New York: {ny.shape}, California: {ca.shape}, Texas: {tx.shape}")
 
 
@@ -2571,7 +2571,7 @@ def evaluate_transfer(df, name):
     mape = np.mean(np.abs((y_true - y_pred) / y_true)) * 100
     r2 = r2_score(y_true, y_pred)
     transfer_index = r2 / r2_ny if r2_ny != 0 else np.nan
-    print(f"\n📊 {name} Prediction Completed")
+    print(f"\n {name} Prediction Completed")
     return [name, rmse, mae, mape, r2, transfer_index]
 
 
@@ -2586,7 +2586,7 @@ df_results = pd.DataFrame(results, columns=["Dataset","RMSE (kN)","MAE (kN)","MA
 df_results = df_results.round(3)
 df_results.to_csv("/content/RandomForest_Transferability.csv", index=False)
 
-print("\n✅ Transferability Results:")
+print("\n Transferability Results:")
 print(df_results)
 print("\nResults saved to: /content/RandomForest_Transferability.csv")
 
@@ -2887,7 +2887,7 @@ mae = mean_absolute_error(y_test, y_pred)
 mape = np.mean(np.abs((y_test - y_pred) / y_test)) * 100
 r2 = r2_score(y_test, y_pred)
 
-print(f"📊 Linear Regression Performance (Texas Dataset):")
+print(f" Linear Regression Performance (Texas Dataset):")
 print(f"RMSE: {rmse:.3f} kN")
 print(f"MAE: {mae:.3f} kN")
 print(f"MAPE: {mape:.2f}%")
@@ -2922,7 +2922,7 @@ ny.columns = ['class','num_axles','gvw']
 ca.columns = ['class','num_axles','gvw']
 tx.columns = ['class','num_axles','gvw']
 
-print("✅ Datasets loaded and standardized!")
+print(" Datasets loaded and standardized!")
 
 X_train = ny[['class','num_axles']]
 y_train = ny['gvw']
@@ -2939,7 +2939,7 @@ def evaluate_transfer(df, name, model, r2_base):
     r2 = r2_score(y_test, y_pred)
     transfer_index = r2 / r2_base if r2_base != 0 else 0
 
-    print(f"\n📊 {name} Transfer Results:")
+    print(f"\n {name} Transfer Results:")
     print(f"RMSE: {rmse:.3f} kN")
     print(f"MAE: {mae:.3f} kN")
     print(f"MAPE: {mape:.2f}%")
@@ -2968,7 +2968,7 @@ results.append(evaluate_transfer(tx, "Texas", lr, r2_ny))
 import pandas as pd
 transfer_results = pd.DataFrame(results, columns=["Dataset","RMSE (kN)","MAE (kN)","MAPE (%)","R²","Transferability Index"])
 
-print("\n✅ Linear Regression Transferability Results:")
+print("\n Linear Regression Transferability Results:")
 print(transfer_results)
 
 transfer_results.to_csv("/content/LinearRegression_Transferability.csv", index=False)
@@ -3050,7 +3050,7 @@ zip_path = "/content/California_Combined_Ordered.zip"
 with zipfile.ZipFile(zip_path, 'r') as zip_ref:
     zip_ref.extractall("/content")
 
-print("✅ California file extracted successfully!")
+print(" California file extracted successfully!")
 
 import pandas as pd
 import numpy as np
@@ -3068,7 +3068,7 @@ df = df[['class', 'gvw']].dropna()
 df['class'] = df['class'].astype(int)
 df['gvw'] = df['gvw'].astype(float)
 
-print("✅ Data Loaded Successfully")
+print(" Data Loaded Successfully")
 print("Shape:", df.shape)
 print("Columns:", df.columns.tolist())
 
@@ -3103,7 +3103,7 @@ mape = np.mean(np.abs((y_test - y_pred) / y_test)) * 100
 r2 = r2_score(y_test, y_pred)
 
 
-print("\n📊 XGBoost Performance using only Vehicle Class (California)")
+print("\n XGBoost Performance using only Vehicle Class (California)")
 print(f"RMSE: {rmse:.3f} kN")
 print(f"MAE: {mae:.3f} kN")
 print(f"MAPE: {mape:.2f}%")
@@ -3115,7 +3115,7 @@ results = pd.DataFrame({
     "Value": [round(rmse, 3), round(mae, 3), round(mape, 2), round(r2, 3)]
 })
 results.to_csv("/content/California_XGBoost_ClassOnly.csv", index=False)
-print("\n✅ Results saved to: /content/California_XGBoost_ClassOnly.csv")
+print("\n Results saved to: /content/California_XGBoost_ClassOnly.csv")
 
 from google.colab import files
 uploaded = files.upload()
