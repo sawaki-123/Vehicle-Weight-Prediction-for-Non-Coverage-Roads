@@ -138,10 +138,10 @@ combined_df = combined_df.drop(columns=["month_num", "lane_num"])
 
 
 combined_df.to_csv("/content/NewYork_Combined_Ordered.csv", index=False)
-print("✅ Saved as /content/NewYork_Combined_Ordered.csv")
+print(" Saved as /content/NewYork_Combined_Ordered.csv")
 
 combined_df.to_csv("/content/NewYork_Combined_Ordered.csv", index=False)
-print("✅ Saved as /content/NewYork_Combined_Ordered.csv")
+print(" Saved as /content/NewYork_Combined_Ordered.csv")
 
 from google.colab import files
 files.download("/content/NewYork_Combined_Ordered.csv")
@@ -154,7 +154,7 @@ import matplotlib.pyplot as plt
 file_path = "/content/NewYork_Combined_Ordered.csv"
 df = pd.read_csv(file_path)
 
-print("✅ Data loaded:", df.shape)
+print(" Data loaded:", df.shape)
 
 
 lanes = sorted(df["lane"].astype(str).unique())
@@ -174,7 +174,7 @@ for lane in lanes:
 
     corr_path = f"/content/NewYork_Correlation_{lane}.csv"
     corr.to_csv(corr_path)
-    print(f"✅ Correlation matrix saved for {lane}: {corr_path}")
+    print(f" Correlation matrix saved for {lane}: {corr_path}")
 
     plt.figure(figsize=(10,6))
     sns.heatmap(corr, annot=True, cmap="coolwarm", fmt=".2f")
@@ -184,10 +184,10 @@ for lane in lanes:
     target = "gvw"
     if target in corr.columns:
         top_corr = corr[target].abs().sort_values(ascending=False)
-        print(f"\n🔎 Top correlations with GVW in {lane}:")
+        print(f"\n Top correlations with GVW in {lane}:")
         print(top_corr)
     else:
-        print("⚠️ GVW column not found in correlations!")
+        print(" GVW column not found in correlations!")
 
     features = ["class", "num_axles", "speed", "hour"]
 
@@ -208,14 +208,14 @@ import matplotlib.pyplot as plt
 file_path = "/content/NewYork_Combined_Ordered.csv"
 df = pd.read_csv(file_path)
 
-print("✅ Data loaded:", df.shape)
+print(" Data loaded:", df.shape)
 
 
 lanes = sorted(df["lane"].astype(str).unique())  "
 
 for lane in lanes:
     print(f"\n==============================")
-    print(f"🔎 Lane: {lane}")
+    print(f" Lane: {lane}")
     print(f"==============================")
 
 
@@ -228,7 +228,7 @@ for lane in lanes:
 
     corr_path = f"/content/NewYork_Correlation_{lane}_focused.csv"
     corr.to_csv(corr_path)
-    print(f"✅ Focused correlation matrix saved for {lane}: {corr_path}")
+    print(f" Focused correlation matrix saved for {lane}: {corr_path}")
 
 
     plt.figure(figsize=(6,5))
@@ -238,7 +238,7 @@ for lane in lanes:
 
 
     top_corr = corr["gvw"].abs().sort_values(ascending=False)
-    print(f"\n🔎 Correlations with GVW in {lane}:")
+    print(f"\n Correlations with GVW in {lane}:")
     print(top_corr)
 
 
@@ -300,14 +300,14 @@ os.makedirs(results_dir, exist_ok=True)
 
 lanes = sorted(df["lane"].unique())
 for lane in lanes:
-    print(f"\n🔎 Processing {lane}...")
+    print(f"\n Processing {lane}...")
 
     df_lane = df[df["lane"] == lane][["hour", "class", "speed", "num_axles", "gvw"]]
 
     corr = df_lane.corr(numeric_only=True)
     corr_path = os.path.join(results_dir, f"corr_{lane}.xlsx")
     corr.to_excel(corr_path)
-    print(f"   📄 Correlation saved: {corr_path}")
+    print(f"  Correlation saved: {corr_path}")
 
 
     plt.figure(figsize=(6,5))
@@ -357,7 +357,7 @@ extract_to = "/content/California"
 with zipfile.ZipFile(zip_path, 'r') as z:
     z.extractall(extract_to)
 
-print("✅ Unzipped. Top-level in /content/California:", os.listdir(extract_to))
+print(" Unzipped. Top-level in /content/California:", os.listdir(extract_to))
 
 
 MONTHS_SET = {'january','february','march','april','may','june',
@@ -380,8 +380,8 @@ def find_base_with_months(start_dir):
 base_path = find_base_with_months(extract_to)
 if not base_path:
     p
-print("📁 Using base_path:", base_path)
-print("📂 Found in base_path:", os.listdir(base_path))
+print(" Using base_path:", base_path)
+print(" Found in base_path:", os.listdir(base_path))
 
 sample_month = 'june'
 print("Lanes in", sample_month, ":", os.listdir(os.path.join(base_path, sample_month)))
@@ -421,12 +421,12 @@ for month in month_order:
             all_frames.append(df)
             file_count += 1
 
-print(f"📦 Files read: {file_count}")
+print(f" Files read: {file_count}")
 if not all_frames:
     raise RuntimeError("No files were read. Check extensions or folder structure.")
 
 ca_raw = pd.concat(all_frames, ignore_index=True)
-print("🧮 Raw combined shape:", ca_raw.shape)
+print(" Raw combined shape:", ca_raw.shape)
 print(ca_raw.head())
 
 from google.colab import files
@@ -440,7 +440,7 @@ extract_to = "/content/California"
 with zipfile.ZipFile(zip_path, 'r') as z:
     z.extractall(extract_to)
 
-print("✅ Unzipped. Top-level in /content/California:", os.listdir(extract_to))
+print(" Unzipped. Top-level in /content/California:", os.listdir(extract_to))
 
 
 MONTHS_SET = {'january','february','march','april','may','june',
@@ -463,8 +463,8 @@ def find_base_with_months(start_dir):
 base_path = find_base_with_months(extract_to)
 if not base_path:
 
-print("📁 Using base_path:", base_path)
-print("📂 Found in base_path:", os.listdir(base_path))
+print(" Using base_path:", base_path)
+print(" Found in base_path:", os.listdir(base_path))
 
 sample_month = 'june'
 print("Lanes in", sample_month, ":", os.listdir(os.path.join(base_path, sample_month)))
@@ -513,7 +513,7 @@ if not os.path.exists(zip_path):
 with zipfile.ZipFile(zip_path, 'r') as z:
     z.extractall(extract_to)
 
-print("✅ Unzipped to:", extract_to)
+print(" Unzipped to:", extract_to)
 print("Top-level contents:", os.listdir(extract_to))
 
 
@@ -541,11 +541,11 @@ else:
             break
 
 if base_path is None:
-    print("❌ Could not find month folders (january..december). Check your zip structure.")
+    print(" Could not find month folders (january..december). Check your zip structure.")
     sys.exit(1)
 
-print("📁 Using base_path:", base_path)
-print("📂 Items in base_path:", os.listdir(base_path))
+print(" Using base_path:", base_path)
+print(" Items in base_path:", os.listdir(base_path))
 
 
 def find_dir_case_insensitive(parent, name_lower):
@@ -583,7 +583,7 @@ for m in month_order:
                     skipped += 1
                     continue
             except Exception as e:
-                print(f"⚠️ Skipped (read error): {fpath} -> {e}")
+                print(f" Skipped (read error): {fpath} -> {e}")
                 skipped += 1
                 continue
 
@@ -681,12 +681,12 @@ for col in final_order:
         ca[col] = np.nan
 ca = ca[final_order]
 
-print("✅ Final California master shape:", ca.shape)
+print(" Final California master shape:", ca.shape)
 print(ca.head(3))
 
 out_csv = "/content/California_Combined_Ordered.csv"
 ca.to_csv(out_csv, index=False)
-print("💾 Saved:", out_csv)
+print(" Saved:", out_csv)
 
 from google.colab import files
 files.download(out_csv)
@@ -696,7 +696,7 @@ import pandas as pd
 
 ca = pd.read_csv("/content/California_Combined_Ordered.csv")
 
-print("✅ Loaded California Master File:", ca.shape)
+print(" Loaded California Master File:", ca.shape)
 print(ca.head())
 
 import seaborn as sns
@@ -712,7 +712,7 @@ def analyze_lane(ca_df, lane_number, out_prefix="California"):
     corr = lane_focus.corr()
     out_csv = f"/content/{out_prefix}_Correlation_lane{lane_number}.csv"
     corr.to_csv(out_csv)
-    print(f"💾 Saved correlation matrix for Lane {lane_number} → {out_csv}")
+    print(f" Saved correlation matrix for Lane {lane_number} → {out_csv}")
 
 
     plt.figure(figsize=(6,5))
@@ -770,7 +770,7 @@ def analyze_lane_california(df, lane_number):
     print("Rows in lane after clean:", len(df_lane))
 
     if len(df_lane) == 0:
-        print("⚠️ No data after cleaning; skipping plots.")
+        print(" No data after cleaning; skipping plots.")
         return
 
 
@@ -870,7 +870,7 @@ def list_columns_in_some_files(root, limit=10):
                         df = pd.read_excel(fpath, nrows=3)
                     cols = [c.strip() for c in df.columns.astype(str)]
                     axle_like = [c for c in cols if "axle" in c.lower()]
-                    print("📄", fpath)
+                    print("", fpath)
                     print("   columns:", cols)
                     print("   axle-like:", axle_like)
                     print("-"*80)
@@ -878,7 +878,7 @@ def list_columns_in_some_files(root, limit=10):
                     if shown >= limit:
                         return
                 except Exception as e:
-                    print("⚠️ Could not read:", fpath, "->", e)
+                    print(" Could not read:", fpath, "->", e)
 
 list_columns_in_some_files(root, limit=10)
 
@@ -906,7 +906,7 @@ else:
             months_root = p
             break
 if not months_root:
-    print("❌ Could not find month folders under", base_path)
+    print(" Could not find month folders under", base_path)
     sys.exit(1)
 
 def find_dir_case_insensitive(parent, name_lower):
@@ -988,7 +988,7 @@ for m in MONTHS_LOWER:
                     skipped += 1
                     continue
             except Exception as e:
-                print("⚠️ Read error:", fpath, "->", e)
+                print(" Read error:", fpath, "->", e)
                 skipped += 1
                 continue
 
@@ -1002,7 +1002,7 @@ for m in MONTHS_LOWER:
             frames.append(std)
             files_read += 1
 
-print(f"📦 Files read: {files_read}, skipped: {skipped}")
+print(f" Files read: {files_read}, skipped: {skipped}")
 ca = pd.concat(frames, ignore_index=True)
 print("Raw standardized shape:", ca.shape)
 
@@ -1038,13 +1038,13 @@ for col in final_cols:
         ca[col] = np.nan
 ca = ca[final_cols]
 
-print("✅ Final California shape:", ca.shape)
+print(" Final California shape:", ca.shape)
 print("Non-null % num_axles:", 100*ca["num_axles"].notna().mean())
 
 
 out_csv = "/content/California_Combined_Ordered.csv"
 ca.to_csv(out_csv, index=False)
-print("💾 Saved:", out_csv)
+print("Saved:", out_csv)
 
 check = (ca
          .assign(has_ax = ca["num_axles"].notna())
@@ -1092,24 +1092,24 @@ def run_lane_corr(df, lane_num, out_dir, prefix="California"):
 
 
     if "gvw" not in lane_df.columns:
-        print("⚠️ No 'gvw' column present; skipping this lane.")
+        print(" No 'gvw' column present; skipping this lane.")
         return
     lane_df = lane_df.dropna(subset=["gvw"])
     print("Rows (after GVW dropna):", len(lane_df))
 
     if len(lane_df) == 0:
-        print("⚠️ Lane is empty after cleaning; skipping.")
-        return
+        print(" Lane is empty after cleaning; skipping.")
+        retur
 
 
     if "num_axles" in lane_df.columns and lane_df["num_axles"].notna().sum() == 0:
-        print("ℹ️ 'num_axles' is empty for this lane — will exclude from correlation.")
+        print(" 'num_axles' is empty for this lane — will exclude from correlation.")
         lane_df = lane_df.drop(columns=["num_axles"])
 
 
     keep_cols = [c for c in lane_df.columns if lane_df[c].std(skipna=True) > 0]
     if "gvw" not in keep_cols:
-        print("⚠️ 'gvw' has zero variance; skipping lane.")
+        print(" 'gvw' has zero variance; skipping lane.")
         return
     lane_df = lane_df[keep_cols]
 
@@ -1119,14 +1119,14 @@ def run_lane_corr(df, lane_num, out_dir, prefix="California"):
 
     corr_csv = os.path.join(out_dir, f"{prefix}_Correlation_lane{lane_num}.csv")
     corr.to_csv(corr_csv)
-    print("💾 Saved matrix:", corr_csv)
+    print(" Saved matrix:", corr_csv)
 
 
     if "gvw" in corr.columns:
         gvws = corr["gvw"].drop(labels=["gvw"], errors="ignore").sort_values(ascending=False)
         gvws_csv = os.path.join(out_dir, f"{prefix}_CorrWithGVW_lane{lane_num}.csv")
         gvws.to_csv(gvws_csv, header=["corr_with_gvw"])
-        print("💾 Saved corr-with-GVW:", gvws_csv)
+        print("Saved corr-with-GVW:", gvws_csv)
 
 
     plt.figure(figsize=(6,5))
@@ -1136,7 +1136,7 @@ def run_lane_corr(df, lane_num, out_dir, prefix="California"):
     heatmap_png = os.path.join(out_dir, f"{prefix}_Heatmap_lane{lane_num}.png")
     plt.savefig(heatmap_png, dpi=300)
     plt.close()
-    print("🖼️ Saved heatmap:", heatmap_png)
+    print(" Saved heatmap:", heatmap_png)
 
 
 for ln in lanes:
@@ -1145,7 +1145,7 @@ for ln in lanes:
 
 zip_path = "/content/California_correlations.zip"
 shutil.make_archive(zip_path.replace(".zip",""), "zip", out_dir)
-print("\n📦 Zipped all results to:", zip_path)
+print("\n Zipped all results to:", zip_path)
 files.download(zip_path)
 
 from google.colab import files
@@ -1182,7 +1182,7 @@ for dp, dn, fns in os.walk(base_path):
             if seen >= 6:
                 break
         except Exception as e:
-            print("⚠️ Could not read:", fpath, "->", e)
+            print(" Could not read:", fpath, "->", e)
     if seen >= 6:
         break
 
@@ -1262,7 +1262,7 @@ for m in MONTHS_LOWER:
             try:
                 raw = pd.read_csv(fpath) if fn.lower().endswith(".csv") else pd.read_excel(fpath)
             except Exception as e:
-                print("⚠️ Read error:", fpath, "->", e)
+                print(" Read error:", fpath, "->", e)
                 skipped += 1
                 continue
 
@@ -1285,10 +1285,10 @@ for m in MONTHS_LOWER:
             frames.append(std)
             files_read += 1
 
-print(f"📦 Files read OK: {files_read}, skipped: {skipped}")
+print(f" Files read OK: {files_read}, skipped: {skipped}")
 
 import pprint
-print("🔎 Alias matches used across files:")
+print(" Alias matches used across files:")
 pprint.pprint({k: dict(sorted(v.items(), key=lambda x: -x[1])) for k,v in match_log.items()})
 
 if not frames:
@@ -1325,7 +1325,7 @@ for col in final_cols:
         ca[col] = np.nan
 ca = ca[final_cols]
 
-print("✅ Final California shape:", ca.shape)
+print(" Final California shape:", ca.shape)
 print("Non-null % per column:")
 print((100*ca.notna().mean()).round(1))
 
@@ -1358,12 +1358,12 @@ if not has_months(BASE):
             candidate = p
             break
     if candidate is None:
-        print("❌ Could not find month folders under", BASE)
+        print(" Could not find month folders under", BASE)
         sys.exit(1)
     BASE = candidate
 
-print("📁 Using base:", BASE)
-print("📂 Months present:", [d for d in os.listdir(BASE) if os.path.isdir(os.path.join(BASE, d))])
+print(" Using base:", BASE)
+print(" Months present:", [d for d in os.listdir(BASE) if os.path.isdir(os.path.join(BASE, d))])
 
 import pandas as pd
 import numpy as np
@@ -1450,7 +1450,7 @@ for m in MONTHS:
             frames.append(std)
             read_ok += 1
 
-print(f"📦 Files read OK: {read_ok}, skipped: {skipped}")
+print(f" Files read OK: {read_ok}, skipped: {skipped}")
 if not frames:
     raise RuntimeError("No usable files were read (must contain GVW).")
 
@@ -1491,7 +1491,7 @@ print("\nAxle availability per lane:\n", ax_audit)
 
 out_csv = "/content/California_Combined_Ordered.csv"
 ca.to_csv(out_csv, index=False)
-print("💾 Saved:", out_csv)
+print(" Saved:", out_csv)
 
 from google.colab import files
 files.download(out_csv)
@@ -1533,18 +1533,18 @@ def lane_corr_and_plots(df, lane_num, prefix="California", sample_scatter=50000,
     n = len(lane_df)
     print("Rows (after requiring GVW):", n)
     if n == 0:
-        print("⚠️ No rows for this lane after cleaning; skipping.")
+        print(" No rows for this lane after cleaning; skipping.")
         return
 
 
     if "num_axles" in lane_df.columns and lane_df["num_axles"].notna().sum() == 0:
         lane_df = lane_df.drop(columns=["num_axles"])
-        print("ℹ️ 'num_axles' empty in this lane; excluded from corr & scatter.")
+        print(" 'num_axles' empty in this lane; excluded from corr & scatter.")
 
 
     keep_cols = [c for c in lane_df.columns if lane_df[c].std(skipna=True) > 0]
     if "gvw" not in keep_cols or len(keep_cols) < 2:
-        print("⚠️ Not enough variation to compute correlations; skipping.")
+        print(" Not enough variation to compute correlations; skipping.")
         return
     lane_df = lane_df[keep_cols]
 
@@ -1598,7 +1598,7 @@ def lane_corr_and_plots(df, lane_num, prefix="California", sample_scatter=50000,
         plt.tight_layout(); plt.savefig(box_path, dpi=300); plt.close()
         print("Saved boxplot:", box_path)
     else:
-        print("ℹ️ No 'hour' column for this lane; skipping boxplot.")
+        print(" No 'hour' column for this lane; skipping boxplot.")
 
 
 for ln in lanes:
@@ -1728,10 +1728,10 @@ for file in os.listdir(extract_path):
 if all_dfs:
     texas_master = pd.concat(all_dfs, ignore_index=True)
     texas_master.to_csv("/content/texas_master.csv", index=False)
-    print("✅ Texas master file created at /content/texas_master.csv")
+    print(" Texas master file created at /content/texas_master.csv")
     display(texas_master.head())
 else:
-    print("⚠️ No CSV files found in the folder")
+    print(" No CSV files found in the folder")
 
 import pandas as pd
 import os
@@ -1760,10 +1760,10 @@ if all_dfs:
     texas_master = pd.concat(all_dfs, ignore_index=True)
     output_path = "/content/texas_master.csv"
     texas_master.to_csv(output_path, index=False)
-    print(f"✅ Texas master file created at: {output_path}")
+    print(f" Texas master file created at: {output_path}")
     display(texas_master.head())
 else:
-    print("⚠️ No CSV files found in Texas folder")
+    print(" No CSV files found in Texas folder")
 
 import pandas as pd
 import calendar
@@ -1786,7 +1786,7 @@ texas_master = texas_master.sort_values(by=["year", "month"]).reset_index(drop=T
 output_path = "/content/texas_master.csv"
 texas_master.to_csv(output_path, index=False)
 
-print("✅ Texas master file saved with months arranged Jan → Dec")
+print(" Texas master file saved with months arranged Jan → Dec")
 display(texas_master.head(12))
 
 from google.colab import files
@@ -1932,7 +1932,7 @@ with zipfile.ZipFile(zip_path, 'w') as zipf:
             zipf.write(os.path.join(root, file),
                        os.path.relpath(os.path.join(root, file), output_dir))
 
-print(f"✅ All correlation results saved to: {zip_path}")
+print(f" All correlation results saved to: {zip_path}")
 
 from google.colab import files
 files.download("/content/texas_correlation_results.zip")
@@ -2021,7 +2021,7 @@ results_df = pd.DataFrame(results)
 
 results_df.to_csv("/content/NewYork_XGB_Results.csv", index=False)
 
-print("✅ Analysis complete. Results saved to /content/NewYork_XGB_Results.csv")
+print(" Analysis complete. Results saved to /content/NewYork_XGB_Results.csv")
 results_df
 
 from google.colab import files
@@ -2103,7 +2103,7 @@ results_df = pd.DataFrame(results)
 
 results_df.to_csv("/content/NewYork_LaneClass_Results.csv", index=False)
 
-print("✅ Results saved to /content/NewYork_LaneClass_Results.csv")
+print(" Results saved to /content/NewYork_LaneClass_Results.csv")
 results_df
 
 from google.colab import files
@@ -2204,7 +2204,7 @@ results_df = pd.DataFrame(results)
 output_path = "/content/NewYork_XGB_Results.csv"
 results_df.to_csv(output_path, index=False)
 
-print(f"✅ Results saved to {output_path}")
+print(f" Results saved to {output_path}")
 print(results_df.head(20))
 
 from google.colab import files
@@ -2294,7 +2294,7 @@ results_df = pd.DataFrame(results)
 output_path = "/content/Texas_XGB_Results.csv"
 results_df.to_csv(output_path, index=False)
 
-print(f"✅ Texas results saved to {output_path}")
+print(f" Texas results saved to {output_path}")
 print(results_df.head(15))
 
 from google.colab import files
@@ -2377,7 +2377,7 @@ results_df = pd.DataFrame(results)
 output_path = "/content/NewYork_XGB_Results.csv"
 results_df.to_csv(output_path, index=False)
 
-print(f"✅ New York results saved to {output_path}")
+print(f" New York results saved to {output_path}")
 print(results_df.head(15))
 
 from google.colab import files
@@ -2408,7 +2408,7 @@ merged = merged[[
 output_path = "/content/AllStates_WideResults.csv"
 merged.to_csv(output_path, index=False)
 
-print("✅ Wide comparison table saved at:", output_path)
+print(" Wide comparison table saved at:", output_path)
 print(merged.head(10))
 
 from google.colab import files
@@ -2464,7 +2464,7 @@ for row in merged.itertuples(index=False):
 word_path = "/content/AllStates_WideResults.docx"
 doc.save(word_path)
 
-print("✅ Results saved as:")
+print(" Results saved as:")
 print("Excel:", excel_path)
 print("Word:", word_path)
 
@@ -2712,7 +2712,7 @@ for p in points:
 output_path = "Feature_Selection_Styled.pptx"
 prs.save(output_path)
 
-print("✅ Presentation created:", output_path)
+print(" Presentation created:", output_path)
 
 from google.colab import files
 files.download("Feature_Selection_Styled.pptx")
@@ -2725,7 +2725,7 @@ import pandas as pd
 import io, zipfile
 from google.colab import files
 
-print("📂 Please upload 'California_Combined_Ordered.zip'")
+print(" Please upload 'California_Combined_Ordered.zip'")
 uploaded = files.upload()
 
 
@@ -2734,24 +2734,24 @@ zip_filename = list(uploaded.keys())[0]
 
 with zipfile.ZipFile(io.BytesIO(uploaded[zip_filename]), 'r') as z:
 
-    print("📦 Files inside ZIP:")
+    print("Files inside ZIP:")
     z.printdir()
 
 
     csv_name = [f for f in z.namelist() if f.lower().endswith('.csv')][0]
-    print(f"\n✅ Found CSV file: {csv_name}")
+    print(f"\n Found CSV file: {csv_name}")
 
 
     with z.open(csv_name) as f:
         df_california = pd.read_csv(f, low_memory=False)
 
 
-print(f"\n✅ California dataset loaded successfully!")
+print(f"\n California dataset loaded successfully!")
 print(f"Shape: {df_california.shape[0]} rows × {df_california.shape[1]} columns")
-print("\n🔍 First five rows:")
+print("\n First five rows:")
 display(df_california.head())
 
-print("\n🧾 Column names:")
+print("\n Column names:")
 print(list(df_california.columns))
 
 import pandas as pd
@@ -2770,32 +2770,32 @@ before = len(df_california)
 df_california = df_california[
     (df_california['class'] >= 4) & (df_california['class'] <= 13)
 ]
-print(f"🚚 Kept vehicle classes 4–13: {before} → {len(df_california)} rows")
+print(f" Kept vehicle classes 4–13: {before} → {len(df_california)} rows")
 
 
 before = len(df_california)
 df_california = df_california[df_california['gvw'] > 0]
-print(f"⚖️ Removed invalid GVW (≤ 0): {before} → {len(df_california)} rows")
+print(f" Removed invalid GVW (≤ 0): {before} → {len(df_california)} rows")
 
 before = len(df_california)
 df_california = df_california.drop_duplicates()
-print(f"🧹 Removed duplicates: {before} → {len(df_california)} rows")
+print(f" Removed duplicates: {before} → {len(df_california)} rows")
 
 
 missing_summary = df_california[cols_to_numeric].isna().sum()
-print("\n🔍 Missing-value summary:")
+print("\n Missing-value summary:")
 print(missing_summary)
 
 
-print("\n✅ Cleaned California dataset summary:")
+print("\n Cleaned California dataset summary:")
 print(df_california.describe())
 
-print("\n🧾 Cleaned columns:")
+print("\n Cleaned columns:")
 print(list(df_california.columns))
 
 
 df_california.to_csv("California_Cleaned.csv", index=False)
-print("\n💾 Saved cleaned dataset as 'California_Cleaned.csv'")
+print("\n Saved cleaned dataset as 'California_Cleaned.csv'")
 
 import numpy as np
 import pandas as pd
@@ -2822,7 +2822,7 @@ corr = corr_df.corr(method='pearson')
 
 
 corr.to_csv("CA_correlation_matrix.csv", index=True)
-print("💾 Saved: CA_correlation_matrix.csv")
+print(" Saved: CA_correlation_matrix.csv")
 
 
 plt.figure(figsize=(10, 8))
@@ -2838,7 +2838,7 @@ plt.tight_layout()
 plt.savefig("Figure3_CA_Correlation_Heatmap.png", dpi=300, bbox_inches="tight")
 plt.show()
 
-print("🖼️ Saved: Figure3_CA_Correlation_Heatmap.png")
+print(" Saved: Figure3_CA_Correlation_Heatmap.png")
 
 sns.heatmap(
     corr, annot=True, fmt=".2f",
@@ -2886,26 +2886,26 @@ for col in cols_to_numeric:
 
 before = len(df_newyork)
 df_newyork = df_newyork[(df_newyork['class'] >= 4) & (df_newyork['class'] <= 13)]
-print(f"🚚 Kept vehicle classes 4–13: {before} → {len(df_newyork)} rows")
+print(f" Kept vehicle classes 4–13: {before} → {len(df_newyork)} rows")
 
 
 before = len(df_newyork)
 df_newyork = df_newyork[df_newyork['gvw'] > 0]
-print(f"⚖️ Removed invalid GVW (≤ 0): {before} → {len(df_newyork)} rows")
+print(f" Removed invalid GVW (≤ 0): {before} → {len(df_newyork)} rows")
 
 
 before = len(df_newyork)
 df_newyork = df_newyork.drop_duplicates()
-print(f"🧹 Removed duplicates: {before} → {len(df_newyork)} rows")
+print(f" Removed duplicates: {before} → {len(df_newyork)} rows")
 
 
 missing_summary = df_newyork[cols_to_numeric].isna().sum()
-print("\n🔍 Missing-value summary:")
+print("\n Missing-value summary:")
 print(missing_summary)
 
 
 df_newyork.to_csv("NewYork_Cleaned.csv", index=False)
-print("\n💾 Saved cleaned dataset as 'NewYork_Cleaned.csv'")
+print("\n Saved cleaned dataset as 'NewYork_Cleaned.csv'")
 
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -2919,7 +2919,7 @@ corr_df = df_newyork[use_cols].copy().fillna(df_newyork[use_cols].median(numeric
 corr = corr_df.corr(method='pearson')
 orrelation matrix
 corr.to_csv("NY_correlation_matrix.csv", index=True)
-print("💾 Saved: NY_correlation_matrix.csv")
+print(" Saved: NY_correlation_matrix.csv")
 
 
 plt.figure(figsize=(8, 6))
@@ -2944,7 +2944,7 @@ plt.show()
 import pandas as pd, io, zipfile
 from google.colab import files
 
-print("📂 Please upload 'Texas_Combined_Ordered.zip'")
+print(" Please upload 'Texas_Combined_Ordered.zip'")
 uploaded = files.upload()
 
 filename = list(uploaded.keys())[0]
@@ -2952,7 +2952,7 @@ filename = list(uploaded.keys())[0]
 
 if filename.lower().endswith('.zip'):
     with zipfile.ZipFile(io.BytesIO(uploaded[filename]), 'r') as z:
-        print("📦 Files inside ZIP:")
+        print(" Files inside ZIP:")
         z.printdir()
         csv_name = [f for f in z.namelist() if f.lower().endswith('.csv')][0]
         print(f"\n(csv_name) as f:
@@ -2963,10 +2963,10 @@ else:
 print(f"\Texas dataset loaded successfully!")
 print(f"Shape: {df_texas.shape[0]} rows × {df_texas.shape[1]} columns")
 
-print("\n🔍 First five rows:")
+print("\n First five rows:")
 display(df_texas.head())
 
-print("\n🧾 Column names:")
+print("\n Column names:")
 print(list(df_texas.columns))
 
 import pandas as pd
@@ -2989,26 +2989,26 @@ for col in cols_to_numeric:
 
 before = len(df_texas)
 df_texas = df_texas[(df_texas['class'] >= 4) & (df_texas['class'] <= 13)]
-print(f"🚚 Kept vehicle classes 4–13: {before} → {len(df_texas)} rows")
+print(f" Kept vehicle classes 4–13: {before} → {len(df_texas)} rows")
 
 
 before = len(df_texas)
 df_texas = df_texas[df_texas['gvw'] > 0]
-print(f"⚖️ Removed invalid GVW (≤ 0): {before} → {len(df_texas)} rows")
+print(f" Removed invalid GVW (≤ 0): {before} → {len(df_texas)} rows")
 
 
 before = len(df_texas)
 df_texas = df_texas.drop_duplicates()
-print(f"🧹 Removed duplicates: {before} → {len(df_texas)} rows")
+print(f" Removed duplicates: {before} → {len(df_texas)} rows")
 
 
 missing_summary = df_texas[cols_to_numeric].isna().sum()
-print("\n🔍 Missing-value summary:")
+print("\n Missing-value summary:")
 print(missing_summary)
 
 
 df_texas.to_csv("Texas_Cleaned.csv", index=False)
-print("\n💾 Saved cleaned dataset as 'Texas_Cleaned.csv'")
+print("\n Saved cleaned dataset as 'Texas_Cleaned.csv'")
 
 import pandas as pd, re
 
@@ -3059,7 +3059,7 @@ if speed_norm:
     orig_to_std[norm_to_orig[speed_norm]] = 'speed'
     usecols.append(norm_to_orig[speed_norm])
 
-print("🔎 Using columns -> standardized names:")
+print(" Using columns -> standardized names:")
 for o, s in orig_to_std.items():
     print(f"  {o} -> {s}")
 
@@ -3085,7 +3085,7 @@ for chunk in pd.read_csv(csv_path, usecols=usecols, chunksize=chunksize, low_mem
     chunk.to_csv(out_path, mode='w' if first else 'a', index=False, header=first)
     first = False
 
-print(f"\n✅ Finished streaming clean Texas data → {out_path}")
+print(f"\n Finished streaming clean Texas data → {out_path}")
 print(f"Rows read: {total_in:,} | Rows kept: {total_out:,}")
 
 import numpy as np
