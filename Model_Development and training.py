@@ -84,7 +84,7 @@ results_df = pd.DataFrame(results)
 output_path = "/content/NewYork_XGB_Results_2features.csv"
 results_df.to_csv(output_path, index=False)
 
-print(f"✅ Results saved to {output_path}")
+print(f" Results saved to {output_path}")
 print(results_df.head(20))
 
 import pandas as pd
@@ -303,7 +303,7 @@ results_df = pd.DataFrame(results)
 output_path = "/content/NewYork_XGB_Results_FourFeatures.csv"
 results_df.to_csv(output_path, index=False)
 
-print("✅ Results saved to:", output_path)
+print(" Results saved to:", output_path)
 print(results_df.head(20))
 
 from google.colab import files
@@ -314,12 +314,12 @@ print("📤 Please select your three files:")
 uploaded = files.upload()
 
 
-print("\n✅ Uploaded files:")
+print("\n Uploaded files:")
 for fn in uploaded.keys():
     print(" -", fn)
 
 
-print("\n📂 Files currently in /content:")
+print("\n Files currently in /content:")
 print(os.listdir("/content"))
 
 import zipfile, os
@@ -332,7 +332,7 @@ with zipfile.ZipFile(zip_path, 'r') as zip_ref:
     zip_ref.extractall(extract_path)
 
 
-print("✅ Extracted files:")
+print("Extracted files:")
 print(os.listdir(extract_path))
 
 import pandas as pd
@@ -350,7 +350,7 @@ for df in [ny, ca, tx]:
     df["gvw"] = pd.to_numeric(df["gvw"], errors="coerce")
     df.dropna(subset=["gvw"], inplace=True)
 
-print("✅ Data loaded successfully!")
+print(" Data loaded successfully!")
 print("New York:", ny.shape)
 print("California:", ca.shape)
 print("Texas:", tx.shape)
@@ -370,7 +370,7 @@ def plot_gvw_density(df, state_name, lanes, filename):
     plt.tight_layout()
     plt.savefig(filename, dpi=300)
     plt.show()
-    print(f"✅ Saved: {filename}")
+    print(f" Saved: {filename}")
 
 plot_gvw_density(ny, "New York", [1,2,3], "/content/NewYork_PD.png")
 plot_gvw_density(ca, "California", [1,2,3], "/content/California_PD.png")
@@ -404,13 +404,13 @@ def plot_gvw_density_final_kips(df, state_name, lanes, filename):
     for lane in lanes:
         subset = df[df["lane"] == lane]["gvw"].dropna()
         if subset.empty:
-            print(f"⚠️ Lane {lane} has no data.")
+            print(f" Lane {lane} has no data.")
             continue
 
 
         subset = subset[(subset > 5) & (subset < 180)]
         if subset.empty:
-            print(f"⚠️ Lane {lane} has no data in 5–180 kips range, skipped.")
+            print(f" Lane {lane} has no data in 5–180 kips range, skipped.")
             continue
 
         subset = subset.sample(min(50000, len(subset)), random_state=42)
@@ -429,7 +429,7 @@ def plot_gvw_density_final_kips(df, state_name, lanes, filename):
     plt.tight_layout()
     plt.savefig(filename, dpi=400)
     plt.show()
-    print(f"✅ Saved → {filename}")
+    print(f" Saved → {filename}")
 
 plot_gvw_density_final_kips(ny, "New York", [1,2,3], "/content/NewYork_PD_FinalKips.png")
 plot_gvw_density_final_kips(ca, "California", [1,2,3], "/content/California_PD_FinalKips.png")
@@ -450,7 +450,7 @@ zip_path = "/content/California_Combined_Ordered.zip"
 
 with zipfile.ZipFile(zip_path, 'r') as zip_ref:
     zip_ref.extractall("/content/")
-    print("✅ California file extracted!")
+    print(" California file extracted!")
 
 
 print("\nExtracted files:")
@@ -462,7 +462,7 @@ import pandas as pd
 df = pd.read_csv("/content/California_Combined_Ordered.csv")
 
 
-print("✅ California Dataset Loaded")
+print(" California Dataset Loaded")
 print("Shape:", df.shape)
 print("\nColumn names:\n", list(df.columns))
 
@@ -486,7 +486,7 @@ import xgboost as xgb
 import matplotlib.pyplot as plt
 
 df = pd.read_csv("/content/California_Combined_Ordered.csv")
-print("✅ California dataset loaded successfully!")
+print(" California dataset loaded successfully!")
 print("Shape:", df.shape)
 
 
@@ -539,7 +539,7 @@ plt.show()
 
 
 results.to_csv("/content/California_XGBoost_Performance.csv", index=False)
-print("\n✅ Results saved as: /content/California_XGBoost_Performance.csv")
+print("\n Results saved as: /content/California_XGBoost_Performance.csv")
 
 from google.colab import files
 uploaded = files.upload()
@@ -551,7 +551,7 @@ zip_path = "/content/texas_master.zip"
 with zipfile.ZipFile(zip_path, 'r') as zip_ref:
     zip_ref.extractall("/content")
 
-print("✅ Texas file extracted successfully!\nExtracted files:")
+print("Texas file extracted successfully!\nExtracted files:")
 print(os.listdir("/content"))
 
 import pandas as pd
@@ -563,7 +563,7 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
 
 df = pd.read_csv("/content/texas_master.csv")
-print("✅ Texas dataset loaded successfully!")
+print(" Texas dataset loaded successfully!")
 print("Shape:", df.shape)
 print("\nColumns:", list(df.columns))
 
@@ -621,7 +621,7 @@ plt.show()
 
 
 results.to_csv("/content/Texas_XGBoost_Performance.csv", index=False)
-print("\n✅ Results saved as: /content/Texas_XGBoost_Performance.csv")
+print("\n Results saved as: /content/Texas_XGBoost_Performance.csv")
 
 import pandas as pd
 import numpy as np
@@ -633,7 +633,7 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
 df = pd.read_csv("/content/texas_master.csv", low_memory=False)
 
-print("✅ Texas dataset loaded successfully!")
+print(" Texas dataset loaded successfully!")
 print("Shape:", df.shape)
 
 
@@ -683,7 +683,7 @@ results = pd.DataFrame({
     'Value': [round(rmse, 2), round(mae, 2), round(mape, 2), round(r2, 3)]
 })
 
-print("\n📊 Model Performance (Texas Sample):\n")
+print("\n Model Performance (Texas Sample):\n")
 print(results.to_string(index=False))
 
 
@@ -694,7 +694,7 @@ plt.tight_layout()
 plt.show()
 
 results.to_csv("/content/Texas_XGBoost_Performance_Sample.csv", index=False)
-print("\n✅ Results saved as: /content/Texas_XGBoost_Performance_Sample.csv")
+print("\n Results saved as: /content/Texas_XGBoost_Performance_Sample.csv")
 
 import pandas as pd
 import numpy as np
@@ -705,7 +705,7 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
 
 df = pd.read_csv("/content/texas_master.csv", nrows=500000, low_memory=False)
-print("✅ Loaded subset:", df.shape)
+print(" Loaded subset:", df.shape)
 print("Columns:", list(df.columns))
 
 
@@ -751,7 +751,7 @@ results = pd.DataFrame({
     'Metric': ['RMSE (kN)', 'MAE (kN)', 'MAPE (%)', 'R²'],
     'Value': [round(rmse, 2), round(mae, 2), round(mape, 2), round(r2, 3)]
 })
-print("\n📊 Model Performance (Texas subset):\n")
+print("\n Model Performance (Texas subset):\n")
 print(results.to_string(index=False))
 
 
@@ -763,4 +763,4 @@ plt.show()
 
 
 results.to_csv("/content/Texas_XGBoost_Performance_Cleaned.csv", index=False)
-print("\n✅ Results saved as: /content/Texas_XGBoost_Performance_Cleaned.csv")
+print("\n Results saved as: /content/Texas_XGBoost_Performance_Cleaned.csv")
